@@ -10,16 +10,43 @@
     <h1>My Projects</h1>
     <div class="gallery">
         <div class="project">
-            <h2>Project 1</h2>
-            <button class="toggle-btn">Show Details</button>
-            <p class="details hidden">This is the first project description.</p>
+            <h3>Project 1</h3>
+            <button class="toggle-details">Show Details</button>
+            <div class="project-details">
+                <p>Details about Project 1...</p>
+            </div>
         </div>
         <div class="project">
-            <h2>Project 2</h2>
-            <button class="toggle-btn">Show Details</button>
-            <p class="details hidden">This is the second project description.</p>
+            <h3>Project 2</h3>
+            <button class="toggle-details">Show Details</button>
+            <div class="project-details">
+                <p>Details about Project 2...</p>
+            </div>
+        </div>
+        <div class="project">
+            <h3>Project 3</h3>
+            <button class="toggle-details">Show Details</button>
+            <div class="project-details">
+                <p>Details about Project 3...</p>
+            </div>
         </div>
     </div>
+    <form id="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <small class="error-message"></small>
+    
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <small class="error-message"></small>
+    
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea>
+        <small class="error-message"></small>
+    
+        <button type="submit">Send Message</button>
+    </form>
+    
     <script src="script.js" defer></script>
 </body>
 </html>
