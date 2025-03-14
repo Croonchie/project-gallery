@@ -15,3 +15,11 @@ button {
     padding: 5px 10px;
     margin-top: 5px;
 }
+
+form {
+    display: block; /* Ensure the form is visible */
+    padding: 20px;
+    border: 1px solid #ccc;
+    max-width: 400px;
+    margin: auto;
+}
