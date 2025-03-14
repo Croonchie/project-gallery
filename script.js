@@ -15,51 +15,62 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("contact-form");
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();  // Prevent form submission to validate 
 
-    form.addEventListener("submit", (event) => {
-        event.preventDefault(); // Stop form submit if failed
-        let isValid = true;
+    // Clear any previous error messages
+    clearErrorMessages();
 
-        // Clear error messages from before
-        document.querySelectorAll(".error-message").forEach(msg => msg.textContent = "");
+    // Validate each field
+    let isValid = true;
 
-        // Validate Name
-        const name = document.getElementById("name");
-        if (name.value.trim() === "") {
-            showError(name, "Name is required.");
-            isValid = false;
-        }
-
-        // Validate Email
-        const email = document.getElementById("email");
-        if (!isValidEmail(email.value)) {
-            showError(email, "Enter a valid email address.");
-            isValid = false;
-        }
-
-        // Validate Message
-        const message = document.getElementById("message");
-        if (message.value.trim() === "") {
-            showError(message, "Message cannot be empty.");
-            isValid = false;
-        }
-
-        // Submit form if only valid
-        if (isValid) {
-            alert("Form submitted successfully!");
-            form.submit();
-        }
-    });
-
-    function showError(input, message) {
-        const errorMessage = input.nextElementSibling;
-        errorMessage.textContent = message;
-        errorMessage.style.color = "red";
+    // Validate Name
+    const name = document.getElementById("name").value;
+    if (name.trim() === "") {
+        showError("name", "Name is required.");
+        isValid = false;
     }
 
-    function isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    // Validate Email
+    const email = document.getElementById("email").value;
+    if (!isValidEmail(email)) {
+        showError("email", "Please enter a valid email address.");
+        isValid = false;
+    }
+
+    // Validate Message
+    const message = document.getElementById("message").value;
+    if (message.trim() === "") {
+        showError("message", "Message is required.");
+        isValid = false;
+    }
+
+    // If all fields are valid, submit the form (for now, we will just log the success)
+    if (isValid) {
+        console.log("Form submitted successfully!");
+        // You can submit the form here if needed: this.submit();
     }
 });
+
+// Function to validate email format using regular expressions
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+// Function to display error messages
+function showError(fieldId, message) {
+    const errorElement = document.getElementById(`${fieldId}-error`);
+    errorElement.textContent = message;
+    errorElement.style.display = "block";
+}
+
+// Function to clear any previous error messages
+function clearErrorMessages() {
+    const errorElements = document.querySelectorAll(".error-message");
+    errorElements.forEach(error => {
+        error.textContent = "";
+        error.style.display = "none";
+    });
+}
+

@@ -33,24 +33,20 @@
     </div>
     <form id="contact-form">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
-        <small class="error-message"></small>
+        <input type="text" id="name" name="name" required>
+        <small class="error-message" id="name-error"></small>
     
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email">
-        <small class="error-message"></small>
+        <input type="email" id="email" name="email" required>
+        <small class="error-message" id="email-error"></small>
     
         <label for="message">Message:</label>
-        <textarea id="message" name="message"></textarea>
-        <small class="error-message"></small>
+        <textarea id="message" name="message" required></textarea>
+        <small class="error-message" id="message-error"></small>
     
         <button type="submit">Send Message</button>
     </form>
-<<<<<<< HEAD
     
     <script src="script.js" defer></script>
-=======
-    <script src="script.js" ></script>
->>>>>>> 87200e6cde158e9a5e38d1909b1cf041801f21e8
 </body>
 </html>
